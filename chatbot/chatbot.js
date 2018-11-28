@@ -1,6 +1,7 @@
 
 'use strict'
 const dialogflow = require('dialogflow');
+const structjsnon = require('./structjson')
 const config = require('../config/keys');
 const sessionClient = new dialogflow.SessionsClient();
 
@@ -37,7 +38,7 @@ module.exports = {
          queryInput: {
            event: {
              name: event,
-             parameters: parameters,
+             parameters: structjsnon.jsonToStructProto(parameters),
              languageCode: config.dialogFlowSessionLanguageCode,
            }
          }
